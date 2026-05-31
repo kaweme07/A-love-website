@@ -17,3 +17,11 @@ button{
     color:white;
     font-size:18px;
 }
+button:hover{
+    transform:scale(1.1);
+}
+
+img{
+    border-radius:20px;
+    margin:10px;
+}
