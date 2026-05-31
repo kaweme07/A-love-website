@@ -1,5 +1,19 @@
-body {
-    background: pink;
-    text-align: center;
-    font-family: Arial;
+body{
+    background:#ffd6e7;
+    font-family:Arial;
+    text-align:center;
+    padding-top:100px;
+}
+
+h1{
+    color:#ff4f87;
+}
+
+button{
+    padding:15px;
+    border:none;
+    border-radius:20px;
+    background:#ff4f87;
+    color:white;
+    font-size:18px;
 }
