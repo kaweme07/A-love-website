@@ -25,3 +25,10 @@ img{
     border-radius:20px;
     margin:10px;
 }
+
+.photo{
+    width:300px;
+    border-radius:20px;
+    margin:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
