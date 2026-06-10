@@ -22,18 +22,20 @@ h1{
     font-family:'Dancing Script', cursive;
 }
 
-button{
-    padding:20px;
-    border:none;
-    border-radius:25px;
-    background:#ff4f87;
-    color:white;
-    font-size:24px;
-    transition:0.3s;
+button {
+    font-size: 24px;
+    padding: 20px 40px;
+    border-radius: 15px;
+    background-color: #ffb6c1;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-button:hover{
-    transform:scale(1.15);
+button:hover {
+    transform: scale(1.05);
 }
 
 p{
