@@ -1,41 +1,82 @@
-<p id="days"></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>⏳ Our Time Together 💕</title>
 
-<script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: "Arial", sans-serif;
+            background: linear-gradient(135deg, #ffd6e0, #d6f0ff);
+        }
 
-const startDate =
-new Date("2025-09-26");
+        h1 {
+            color: #444;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
 
-function updateCounter(){
+        #counter {
+            font-size: 42px;
+            font-weight: bold;
+            color: #333;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 25px 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            animation: pop 1s ease-in-out infinite alternate;
+        }
 
-    const now = new Date();
+        @keyframes pop {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
 
-    const diff = now - startDate;
+        .subtitle {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
 
-    const days =
-    Math.floor(diff/(1000*60*60*24));
+<body>
 
-    const hours =
-    Math.floor(
-        (diff%(1000*60*60*24))
-        /(1000*60*60)
-    );
+    <h1>Countdown Timer 💕</h1>
+    <div id="counter">Loading...</div>
+    <div class="subtitle">time is doing its thing… unfortunately</div>
 
-    document
-    .getElementById("days")
-    .innerHTML =
-    days +
-    " days ❤️ " +
-    hours +
-    " hours";
+    <script>
+        const targetDate = new Date("2026-12-31T00:00:00").getTime();
 
-}
+        function updateCounter() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
 
-updateCounter();
+            if (difference <= 0) {
+                document.getElementById("counter").innerHTML = "it happened 💔";
+                return;
+            }
 
-setInterval(updateCounter,1000);
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-</script>
+            document.getElementById("counter").innerHTML =
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
 
-<a href="music.html">
-    <button>🎶 Our Song 🎶</button>
-</a>
+        updateCounter();
+        setInterval(updateCounter, 1000);
+    </script>
+
+</body>
+</html>
