@@ -5,6 +5,33 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
+    
+    <script>
+
+function createHeart(){
+
+    const heart =
+    document.createElement("div");
+
+    heart.innerHTML = "❤️";
+
+    heart.classList.add("heart");
+
+    heart.style.left =
+    Math.random() * 100 + "vw";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },5000);
+
+}
+
+setInterval(createHeart,500);
+
+    </script>
+    
 <body>
 
 <h1>💌 Enter Secret Code</h1>
@@ -34,6 +61,9 @@ function checkPassword(){
 </script>
 
 </body>
+    
 <div class="heart-container"></div>
+    
 <p id="days"></p>
+    
 </html>
