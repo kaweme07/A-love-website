@@ -52,31 +52,23 @@ img{
     border-radius:15px;
     box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
-.hearts{
-    font-size:40px;
-    animation: float 3s infinite alternate;
+
+.heart{
+    position:fixed;
+    top:-50px;
+    font-size:25px;
+    animation:fall 5s linear forwards;
 }
 
-@keyframes float{
+@keyframes fall{
     from{
         transform:translateY(0);
     }
+
     to{
-        transform:translateY(-20px);
+        transform:translateY(110vh);
     }
 }
-
-@keyframes bgmove{
-    0%{
-        background-position:0% 50%;
-    }
-    50%{
-        background-position:100% 50%;
-    }
-    100%{
-        background-position:0% 50%;
-    }
-    }
 
 #days{
     font-size:40px;
