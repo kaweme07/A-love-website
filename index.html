@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>For Someone Special ❤️</title>
+    <title>Hey My Baby ❤️</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h1>Hey My Baby 🥹🫂</h1>
+<h1>💌 Enter Secret Code</h1>
 
-<p>I made this website just for you💋.</p>
+<input type="password" id="password">
 
-<a href="letter.html">
-<button>Open My Letter 💌</button>
-</a>
+<br><br>
+
+<button onclick="checkPassword()">
+Enter ❤️
+</button>
+
+<script>
+function checkPassword(){
+
+    let password =
+    document.getElementById("password").value;
+
+    if(password === "ILoveYou"){
+        window.location.href =
+        "letter.html";
+    }
+    else{
+        alert("Wrong password 😭");
+    }
+}
+</script>
 
 </body>
-    <div class="hearts">💖 💕 💗 💝 💞</div>
+<div class="hearts">💖 💕 💗 💝 💞</div>
+<p id="days"></p>
 </html>
