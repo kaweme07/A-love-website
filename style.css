@@ -77,3 +77,9 @@ img{
         background-position:0% 50%;
     }
     }
+
+#days{
+    font-size:40px;
+    color:#ff4f87;
+    font-weight:bold;
+}
