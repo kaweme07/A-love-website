@@ -7,12 +7,37 @@
 
 <h1>📸 Memories 📸</h1>
 
-<img src="IMG-20251015-WA0007(2).jpg" class="photo">
-<img src="IMG-20260531-WA0005.jpg" class="photo">
-<img src="IMG-20251129-WA0039(1).jpg" class="photo">
+<img src="IMG-20251015-WA0007(2).jpg" class="popup-img">
+<img src="IMG-20260531-WA0005.jpg" class="popup-img">
+<img src="IMG-20251129-WA0039(1).jpg" class="popup-img">
 
+<!-- POPUP BOX -->
+<div id="popup" onclick="closePopup()">
+    <img id="popup-img">
+</div>
+  
 <br><br>
 
+  <script>
+
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popup-img");
+
+const images = document.querySelectorAll(".popup-img");
+
+images.forEach(img => {
+    img.addEventListener("click", function(){
+        popup.style.display = "flex";
+        popupImg.src = this.src;
+    });
+});
+
+function closePopup(){
+    popup.style.display = "none";
+}
+
+  </script>
+  
 </body>
 
   <a href="counter.html">
