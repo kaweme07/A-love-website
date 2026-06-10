@@ -1,22 +1,23 @@
+<p id="days"></p>
+
 <script>
+
 const startDate =
 new Date("2025-09-26");
 
 function updateCounter(){
 
-    const now =
-    new Date();
+    const now = new Date();
 
-    const diff =
-    now - startDate;
+    const diff = now - startDate;
 
     const days =
     Math.floor(diff/(1000*60*60*24));
 
     const hours =
     Math.floor(
-    (diff%(1000*60*60*24))
-    /(1000*60*60)
+        (diff%(1000*60*60*24))
+        /(1000*60*60)
     );
 
     document
@@ -26,11 +27,15 @@ function updateCounter(){
     " days ❤️ " +
     hours +
     " hours";
+
 }
+
+updateCounter();   // ← IMPORTANT
 
 setInterval(updateCounter,1000);
 
-    <a href="music.html">
-<button>Our Song 🎵</button>
-</a>
 </script>
+
+<a href="music.html">
+    <button>🎶 Our Song 🎶</button>
+</a>
