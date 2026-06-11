@@ -4,6 +4,64 @@
     <title>Hey My Baby ❤️</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /* SCREEN FADE OVERLAY */
+        #fade {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+            z-index: 9998;
+        }
+
+        #fade.show {
+            opacity: 0.7;
+        }
+
+        /* LOADING TEXT */
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 32px;
+            font-family: 'Dancing Script', cursive;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 9999;
+        }
+
+        #loading.show {
+            opacity: 1;
+        }
+
+        /* SPARKLES */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 18px;
+            animation: pop 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -22,7 +80,11 @@ Enter
 
 <div class="button-container"></div>
 
-<!-- HEART SCRIPT -->
+<!-- OVERLAY ELEMENTS -->
+<div id="fade"></div>
+<div id="loading">Entering... 💖</div>
+
+<!-- HEARTS -->
 <script>
 function createHeart(){
     const heart = document.createElement("div");
@@ -33,20 +95,18 @@ function createHeart(){
 
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
+    setTimeout(() => heart.remove(), 5000);
 }
 
 setInterval(createHeart, 1000);
 </script>
 
-<!-- PASSWORD + SPARKLE SYSTEM -->
+<!-- MAIN LOGIC -->
 <script>
 function createSparkles(x, y) {
     const emojis = ["✨", "💫", "✨", "💫"];
 
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 18; i++) {
         const sparkle = document.createElement("div");
         sparkle.classList.add("sparkle");
         sparkle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
@@ -54,29 +114,24 @@ function createSparkles(x, y) {
         document.body.appendChild(sparkle);
 
         const angle = Math.random() * 2 * Math.PI;
-        const distance = Math.random() * 90;
-
-        const dx = Math.cos(angle) * distance + "px";
-        const dy = Math.sin(angle) * distance + "px";
+        const distance = Math.random() * 120;
 
         sparkle.style.left = x + "px";
         sparkle.style.top = y + "px";
-        sparkle.style.setProperty("--x", dx);
-        sparkle.style.setProperty("--y", dy);
 
-        setTimeout(() => {
-            sparkle.remove();
-        }, 800);
+        sparkle.style.setProperty("--x", Math.cos(angle) * distance + "px");
+        sparkle.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+        setTimeout(() => sparkle.remove(), 1000);
     }
 }
 
 function checkPassword(){
-    let password = document.getElementById("password").value;
+    const password = document.getElementById("password").value;
 
     if(password === "love"){
         return true;
-    }
-    else{
+    } else {
         alert("Wrong password 😭");
         return false;
     }
@@ -86,15 +141,25 @@ function handleEnter(event){
     const x = event.clientX;
     const y = event.clientY;
 
-    // always sparkles first
+    // sparkle burst
     createSparkles(x, y);
 
-    // delay redirect so sparkles show properly
+    // start cinematic transition
+    const fade = document.getElementById("fade");
+    const loading = document.getElementById("loading");
+
+    fade.classList.add("show");
+    loading.classList.add("show");
+
+    // delay redirect so everything plays properly
     setTimeout(() => {
         if(checkPassword()){
             window.location.href = "letter.html";
+        } else {
+            fade.classList.remove("show");
+            loading.classList.remove("show");
         }
-    }, 300);
+    }, 2200);
 }
 </script>
 
