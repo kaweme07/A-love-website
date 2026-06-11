@@ -173,15 +173,6 @@ h1, h2, h3 {
     -webkit-backdrop-filter: blur(8px);
     }
 
-#popup {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#popup.show {
-    opacity: 1;
-}
-
 .site-button {
   margin-top: 20px;
   font-size: 50px;
