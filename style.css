@@ -30,28 +30,33 @@
     border-radius:15px;
 }
 
-body{
-    background:linear-gradient(
+body {
+    background: linear-gradient(
         45deg,
         #ffd6e7,
         #ffc1d6,
         #ffe6f0
     );
+    background-size: 300% 300%;
+    animation: bgmove 8s infinite;
 
-    background-size:300% 300%;
-    animation:bgmove 8s infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-h1{
-    color:#ff4f87;
-    font-size:80px;
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 80px;
+    color: #ff4f87;
     text-shadow:
         0 0 10px #ff8ab5,
         0 0 20px #ff8ab5,
         0 0 30px #ff8ab5;
-}
-h1{
-    font-family:'Dancing Script', cursive;
+    text-align: center;
 }
 
 button {
@@ -120,18 +125,15 @@ h1, h2, h3 {
   text-align: center;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-    }
-
 .button-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+
+@keyframes bgmove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
