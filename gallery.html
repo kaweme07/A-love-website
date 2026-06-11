@@ -27,7 +27,7 @@ const images = document.querySelectorAll(".popup-img");
 
 images.forEach(img => {
     img.addEventListener("click", function(){
-        popup.style.display = "block";
+        popup.style.display = "flex";
         popup.style.background = "red";
         popupImg.src = this.src;
     });
