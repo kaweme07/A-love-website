@@ -1,85 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Our Time Together ⏳</title>
+  <meta charset="UTF-8">
+  <title>Our Love Counter 💕</title>
 
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: "Arial", sans-serif;
-            background: linear-gradient(135deg, #ffd6e0, #d6f0ff);
-        }
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #ffeef5);
+      color: #d63384;
+      text-align: center;
+    }
 
-        h1 {
-            color: #444;
-            margin-bottom: 20px;
-            font-size: 28px;
-        }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
 
-        #counter {
-            font-size: 42px;
-            font-weight: bold;
-            color: #333;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 25px 35px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-            animation: pop 1s ease-in-out infinite alternate;
-        }
+    p {
+      font-size: 18px;
+      opacity: 0.8;
+    }
 
-        @keyframes pop {
-            from { transform: scale(1); }
-            to { transform: scale(1.05); }
-        }
+    .counter-box {
+      margin-top: 20px;
+      padding: 25px 35px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-        .subtitle {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
+    .small {
+      margin-top: 15px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .heart {
+      animation: pulse 1s infinite;
+      display: inline-block;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
 </head>
 
 <body>
 
-    <h1>Our Time Together ⏳</h1>
-    <div id="counter">Loading...</div>
-    <div class="subtitle"></div>
+  <h1>Our Time Together <span class="heart">❤️</span></h1>
+  <p>Since 26 September 2025</p>
 
-    <script>
-        const targetDate = new Date("2026-09-26T00:00:00").getTime();
+  <div class="counter-box" id="counter">
+    Loading...
+  </div>
 
-        function updateCounter() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
+  <div class="small">
+    Every second counts! Literally 😂 
+  </div>
 
-            if (difference <= 0) {
-                document.getElementById("counter").innerHTML = "it happened 💔";
-                return;
-            }
+  <script>
+    const startDate = new Date("2025-09-26T00:00:00");
 
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
 
-            document.getElementById("counter").innerHTML =
-                `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
 
-        updateCounter();
-        setInterval(updateCounter, 1000);
-    </script>
+      document.getElementById("counter").innerHTML =
+        `${days} days • ${hours} hours • ${minutes} minutes • ${seconds} seconds`;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+  </script>
+
 </body>
-
-    <a href="music.html">
-<button>Our Song 🎶</button>
-    </a>
 </html>
