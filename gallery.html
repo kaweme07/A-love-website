@@ -27,6 +27,7 @@ const images = document.querySelectorAll(".popup-img");
 
 images.forEach(img => {
     img.addEventListener("click", function(){
+        alert("Image clicked!");
         popup.style.display = "flex";
         popupImg.src = this.src;
     });
@@ -38,10 +39,9 @@ function closePopup(){
 
   </script>
 
-</body>
-
-  <a href="counter.html">
+      <a href="counter.html">
     <button>⏳ Our Time Together ❤️</button>
-  </a>
-  
+      </a>
+    
+</body>
 </html>
