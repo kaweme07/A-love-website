@@ -14,7 +14,7 @@
 
 <br><br>
 
-<button onclick="checkPassword()">
+<button onclick="handleEnter(event)">
 Enter
 </button>
 
@@ -41,17 +41,60 @@ function createHeart(){
 setInterval(createHeart, 1000);
 </script>
 
-<!-- PASSWORD SCRIPT -->
+<!-- PASSWORD + SPARKLE SYSTEM -->
 <script>
+function createSparkles(x, y) {
+    const emojis = ["✨", "💫", "✨", "💫"];
+
+    for (let i = 0; i < 12; i++) {
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        sparkle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+        document.body.appendChild(sparkle);
+
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 90;
+
+        const dx = Math.cos(angle) * distance + "px";
+        const dy = Math.sin(angle) * distance + "px";
+
+        sparkle.style.left = x + "px";
+        sparkle.style.top = y + "px";
+        sparkle.style.setProperty("--x", dx);
+        sparkle.style.setProperty("--y", dy);
+
+        setTimeout(() => {
+            sparkle.remove();
+        }, 800);
+    }
+}
+
 function checkPassword(){
     let password = document.getElementById("password").value;
 
     if(password === "love"){
-        window.location.href = "letter.html";
+        return true;
     }
     else{
         alert("Wrong password 😭");
+        return false;
     }
+}
+
+function handleEnter(event){
+    const x = event.clientX;
+    const y = event.clientY;
+
+    // always sparkles first
+    createSparkles(x, y);
+
+    // delay redirect so sparkles show properly
+    setTimeout(() => {
+        if(checkPassword()){
+            window.location.href = "letter.html";
+        }
+    }, 300);
 }
 </script>
 
