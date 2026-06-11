@@ -190,3 +190,22 @@ h1, h2, h3 {
 .site-button:hover {
   transform: scale(1.05);
     }
+
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 18px;
+    animation: pop 0.8s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes pop {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0);
+        opacity: 0;
+    }
+    }
